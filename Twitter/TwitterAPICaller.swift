@@ -30,6 +30,7 @@ class TwitterAPICaller: BDBOAuth1SessionManager {
         TwitterAPICaller.client?.fetchRequestToken(withPath: url, method: "GET", callbackURL: URL(string: "alamoTwitter://oauth"), scope: nil, success: { (requestToken: BDBOAuth1Credential!) -> Void in
             let url = URL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken.token!)")!
             UIApplication.shared.open(url)
+          //  UserDefaults.standard.set(true, forKey:"userLoggedIn")
         }, failure: { (error: Error!) -> Void in
             print("Error: \(error.localizedDescription)")
             self.loginFailure?(error)
